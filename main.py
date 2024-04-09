@@ -16,7 +16,7 @@ async def websocket_endpoint(websocket: WebSocket):
         data = await websocket.receive_text()
         prompt = data
         model = genai.GenerativeModel('gemini-pro')
-        response = model.generate_content(prompt)
+        response = model.generate_content(f"Finge ser Jarvis, de la pelicula de Iron Man, debes actuar con mucha inteligencia y responder textos de manera corta, sin nada representado en markdown, solo texto plano con signos de puntuacion y esto es lo que debes hacer: {prompt}")
         generated_text = response.text  
 
         await websocket.send_text(generated_text)
